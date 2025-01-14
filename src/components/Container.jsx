@@ -1,17 +1,16 @@
-import { useState } from "react"
-import Card from "./Card"
-import Header from "./Header"
-import SearchBar from "./SearchBar"
+import { useState } from "react";
+import Card from "./Card";
+import Header from "./Header";
+import SearchBar from "./SearchBar";
 
+export default function Container() {
+	const [peliculaSeleccionada, setPeliculaSeleccionada] = useState("");
 
-export default function Container(){
-  const [peliculaSeleccionada,setPeliculaSeleccionada] = useState("")
-
-  return(
-    <div className="container d-flex flex-column align-items-center gap-5 pt-5">
-      <Header/>
-      <SearchBar setPeliculaSeleccionada={setPeliculaSeleccionada}/>
-      <Card peliculaSeleccionada={peliculaSeleccionada}/>
-    </div>
-  )
+	return (
+		<div className="container d-flex flex-column align-items-center gap-5 pt-5">
+			<Header />
+			<SearchBar setPeliculaSeleccionada={setPeliculaSeleccionada} />
+			<Card peliculaSeleccionada={peliculaSeleccionada} />
+		</div>
+	);
 }
