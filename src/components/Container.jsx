@@ -7,7 +7,7 @@ export default function Container() {
 	const [peliculaSeleccionada, setPeliculaSeleccionada] = useState("");
 
 	return (
-		<div className="container d-flex flex-column align-items-center gap-5 pt-5">
+		<div className="container d-flex flex-column align-items-center gap-4 pt-5">
 			<Header />
 			<SearchBar setPeliculaSeleccionada={setPeliculaSeleccionada} />
 			<Card peliculaSeleccionada={peliculaSeleccionada} />

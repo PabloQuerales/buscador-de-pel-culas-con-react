@@ -29,7 +29,7 @@ export default function SearchBar(props) {
 				aria-label="Escribe el nombre de tu película"
 				aria-describedby="button-addon2"
 			/>
-			<button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={handleClick}>
+			<button className="btn btn-outline-light" type="button" id="button-addon2" onClick={handleClick}>
 				Enviar
 			</button>
 		</div>
