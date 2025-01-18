@@ -5,20 +5,23 @@ export default function SearchBar(props) {
 	const [randomNumber, setRandomNumber] = useState(Math.floor(Math.random() * 10));
 	const [SearchBar, setSearchBar] = useState("");
 
-	function getMovies() {
+	async function getMovies() {
 		const requestOptions = {
 			method: "GET",
 			redirect: "follow"
 		};
-
-		fetch(`http://www.omdbapi.com/?apikey=78b24df6&s=${inputValue}`, requestOptions)
-			.then((response) => response.json())
-			.then((result) => {
-				if (props.peliculaSeleccionada.length < 4) {
-					props.setPeliculaSeleccionada([...props.peliculaSeleccionada, result.Search[randomNumber].Poster]);
-				}
-			})
-			.catch((error) => console.error(error));
+		try {
+			const response = await fetch(`http://www.omdbapi.com/?apikey=78b24df6&s=${inputValue}`, requestOptions);
+			const result = await response.json();
+			if (result.Error == "Movie not found!") {
+				alert("Esta película no existe, intenta con el título en ingles :D");
+			}
+			if (props.peliculaSeleccionada.length < 4) {
+				props.setPeliculaSeleccionada([...props.peliculaSeleccionada, result.Search[randomNumber].Poster]);
+			}
+		} catch (error) {
+			console.error(error);
+		}
 	}
 	const handleClick = (e) => {
 		setInputValue(e.target.parentElement.firstChild.value.replaceAll(" ", "+"));
@@ -26,7 +29,6 @@ export default function SearchBar(props) {
 		setSearchBar("");
 	};
 	const handleChange = (e) => {
-		console.log(e.target.value);
 		setSearchBar(e.target.value);
 	};
 	useEffect(() => {
