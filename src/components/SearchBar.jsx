@@ -11,7 +11,7 @@ export default function SearchBar(props) {
 			redirect: "follow"
 		};
 		try {
-			const response = await fetch(`http://www.omdbapi.com/?apikey=78b24df6&s=${inputValue}`, requestOptions);
+			const response = await fetch(`https://www.omdbapi.com/?apikey=78b24df6&s=${inputValue}`, requestOptions);
 			const result = await response.json();
 			if (result.Error == "Movie not found!") {
 				alert("Esta película no existe, intenta con el título en ingles :D");
